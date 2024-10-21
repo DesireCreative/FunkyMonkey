@@ -19,7 +19,7 @@ backgroundImage = pygame.transform.scale(backgroundImage, (W_W, W_H))
 sidekickX = x - 50
 sidekickY = y - 50
 
-cutsceneDisplay = ["cutscenes/testCustscene.png"]
+zone1Cutscene = "cutscenes/testCustscene.png"
 
 zoneMusic = ["music/greenhill.mp3"]
 
@@ -55,11 +55,12 @@ musicPlayer()
 #def checkPoint():
     
 
-"""def cutSceneAdder():
-    cutsceneDisplay[0] = pygame.image.load("cutscenes/testCustscene.png").convert_alpha()
+def cutSceneAdder():
+    zone1Cutscene = pygame.image.load("cutscenes/testCustscene.png").convert_alpha()
     if abs(x - 1497.1) < 5:
-        screen.blit(cutsceneImage, (0, 0))
-        print("test")"""
+        screen.blit(zone1Cutscene, (0, 0))
+        zone1Cutscene = pygame.transform.scale(sidekick, (W_W, W_H))
+        print("test")
       
 
 def playerHitbox(self, rect):
@@ -67,6 +68,9 @@ def playerHitbox(self, rect):
         if rect[1] + rect[3] > self.hitbox[1]:
                 return True
         return False
+        
+def itemDrawer():
+    
     
 def linIndex(current, target, speed):
     return current + (target - current) * speed
@@ -84,8 +88,8 @@ while status:
     sidekickX = linIndex(sidekickX, x, 0.01)
     sidekickY = linIndex(sidekickY, y, 0.01)
     
-    """cutSceneAdder()
-    checkPoint()"""
+    cutSceneAdder()
+    #checkPoint()
     screen.blit(backgroundImage, (0, 0))
     screen.blit(monkey, (x, y))
     #screen.blit(funkeyMonkey1, (x, y))
