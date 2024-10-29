@@ -8,12 +8,12 @@ W_H = 1080
 
 x = 100
 y = 100
-velocity = 1
+velocity = 3
 
 screen = pygame.display.set_mode((W_W, W_H))
 pygame.display.set_caption('Funky Monkey')
 
-backgroundImage = pygame.image.load("C:/Users/brado/Downloads/funkyMonkey/images/BGBEACH.png").convert()
+backgroundImage = pygame.image.load("images/BGBEACH.png").convert()
 backgroundImage = pygame.transform.scale(backgroundImage, (W_W, W_H))
 
 sidekickX = x - 50
@@ -27,9 +27,9 @@ zoneMusic = ["music/greenhill.mp3"]
 funkeyMonkey1 = pygame.image.load(funkyMonkeyImages[0]).convert_alpha()
 funkeyMonkey1 = pygame.transform.scale(funkeyMonkey1, (352.25, 264.2))"""
 
-monkey = pygame.image.load("C:/Users/brado/Downloads/funkyMonkey/images/funkyMonkey.png").convert_alpha()
+monkey = pygame.image.load("images/funkyMonkey.png").convert_alpha()
 monkey = pygame.transform.scale(monkey, (352, 264))
-sidekick = pygame.image.load("C:/Users/brado/Downloads/funkyMonkey/images/penguien.png").convert_alpha()
+sidekick = pygame.image.load("images/penguien.png").convert_alpha()
 sidekick = pygame.transform.scale(sidekick, (165, 123))
 
 zone1Checkpoint = pygame.image.load("images/checkPointMarker.png").convert_alpha()
@@ -40,10 +40,10 @@ def movementSystem(keys, x, y):
         x -= velocity
     if keys[pygame.K_RIGHT]:
         x += velocity
-    if keys[pygame.K_UP]:
+    """if keys[pygame.K_UP]:
         y -= velocity
     if keys[pygame.K_DOWN]:
-        y += velocity
+        y += velocity"""
     return x, y
 
 def musicPlayer():
@@ -70,10 +70,13 @@ def playerHitbox(self, rect):
         return False
         
 def itemDrawer():
+    pass
     
-    
-def linIndex(current, target, speed):
+def linInter(current, target, speed):
     return current + (target - current) * speed
+    
+def enemyDrawer():
+    pass
 
 status = True
 while status:
@@ -85,8 +88,8 @@ while status:
 
     x, y = movementSystem(keys, x, y)
 
-    sidekickX = linIndex(sidekickX, x, 0.01)
-    sidekickY = linIndex(sidekickY, y, 0.01)
+    sidekickX = linInter(sidekickX, x, 0.01)
+    sidekickY = linInter(sidekickY, y, 0.01)
     
     cutSceneAdder()
     #checkPoint()
